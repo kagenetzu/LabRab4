@@ -18,13 +18,18 @@ namespace LAB4
             var str = String.Format($"\nОбъем(литр): {this.volume}");
             return str;
         }
+        public virtual String GetName()
+        {
+            return "\tЭто последний элемент";
+        }
     }
     //сок
     public enum FruitType { lemon, watermelon, melon };
+    public enum fruitPieces { есть, нету};
     class Juice : Drink
     {
         public FruitType fruit = FruitType.lemon ;//фрукт
-        public bool fruitPieces;//мякоть
+        public fruitPieces fruitPieces;//мякоть
 
         public override String GetInfo()
         {
@@ -34,13 +39,17 @@ namespace LAB4
             str += String.Format($"\nНаличие мякоти: {this.fruitPieces}");
             return str;
         }
+        public override String GetName()
+        {
+            return "\tСок";
+        }
         public static Juice Generate()
         {
             return new Juice
             {
-                volume = rnd.Next(1,5), 
-                fruit = (FruitType)rnd.Next(3), 
-                fruitPieces = rnd.Next() % 2 == 0 
+                volume = rnd.Next(1, 5),
+                fruit = (FruitType)rnd.Next(3),
+                fruitPieces = (fruitPieces)rnd.Next(2) 
             };
         }
     }
@@ -59,6 +68,10 @@ namespace LAB4
             str += String.Format($"\nТип: {this.soda}");
             str += String.Format($"\nКол-во пузырьков: {this.numBubbles}");
             return str;
+        }
+        public override String GetName()
+        {
+            return "\tГазировка";
         }
         public static Soda Generate()
         {
@@ -84,6 +97,10 @@ namespace LAB4
             str += String.Format($"\nТип: {this.alcohol}");
             str += String.Format($"\nКрепость: {this.strength}");
             return str;
+        }
+        public override String GetName()
+        {
+            return "\tАлкоголь";
         }
         public static Alcohol Generate()
         {

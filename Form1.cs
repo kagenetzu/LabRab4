@@ -24,9 +24,23 @@ namespace LAB4
         {
 
         }
+        private void NextElement()
+        {
+             richTextBox4.Clear();
+            if (drinksList.Count != 0)
+            {
+                richTextBox4.Text = drinksList[0].GetName();
+            }
+            else
+            {
+                richTextBox4.Text = " ";
+            }
+
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            richTextBox2.Clear();
             this.drinksList.Clear();
             var rnd = new Random();
             for (var i = 0; i < 15; ++i)
@@ -46,6 +60,10 @@ namespace LAB4
                 }
             }
             ShowInfo();
+            NextElement();
+            richTextBox3.Text = drinksList.Count.ToString();
+            
+
         }
 
         private void ShowInfo()
@@ -87,6 +105,24 @@ namespace LAB4
             richTextBox2.Text = drink.GetInfo();
 
             ShowInfo();
+            NextElement();
+            richTextBox3.Text = drinksList.Count.ToString();
+
+        }
+
+        private void richTextBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
